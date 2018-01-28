@@ -16,7 +16,12 @@ namespace bittricks
 namespace impl
 {
     /*
-     * bit_size as a function
+     * The number of bits in a given integer type.
+     *
+     * Helper for bit_size.
+     *
+     * Signed types are considered to have the same number of bits as the
+     * corresponding unsigned types.
      */
     template<typename T>
     constexpr int bit_size_helper()
@@ -36,6 +41,9 @@ namespace impl
         return bits;
     }
 
+    /*
+     * Simple type wrapper.
+     */
     template<class T>
     struct wrap_type
     { 
@@ -43,10 +51,13 @@ namespace impl
     };
 
     /*
-     * Indicated that unsigned_t can't be formed at compile time.
+     * Helper for unsigned_t.
+     *
+     * Used to cause a compile error if there is no type of a given bit size.
      */
     struct undefined_unsigned_t
     {
+        // 'type' not defined here.
     };
 
 } // namespace impl
