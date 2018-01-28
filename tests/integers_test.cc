@@ -1,8 +1,8 @@
-#include "bittricks/integer_types.h"
+#include "bittricks/integers.h"
 #include "gtest/gtest.h"
 #include <limits>
 
-TEST(IntegerTypesTest, bit_size)
+TEST(IntegersTest, bit_size)
 {
     using bittricks::bit_size;
 
@@ -19,7 +19,7 @@ TEST(IntegerTypesTest, bit_size)
     static_assert(bit_size<unsigned long long>  == std::numeric_limits<unsigned long long>::digits, "");
 }
 
-TEST(IntegerTypesTest, unsigned_t)
+TEST(IntegersTest, unsigned_t)
 {
     using bittricks::bit_size;
     using bittricks::unsigned_t;
