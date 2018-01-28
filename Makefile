@@ -1,5 +1,5 @@
 CPPFLAGS = -MMD -MP
-CXXFLAGS = -O2 -std=c++17 -Wall -Wextra
+CXXFLAGS = -O2 -std=c++14 -Wall -Wextra
 GTEST_DIR = googletest/googletest
 
 .PHONY: all
