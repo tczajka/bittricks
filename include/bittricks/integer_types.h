@@ -4,8 +4,8 @@
  * Author: Tomek Czajka.
  */
 
-#ifndef BITTRICKS_UNSIGNED_T_H_INCLUDED
-#define BITTRICKS_UNSIGNED_T_H_INCLUDED
+#ifndef BITTRICKS_INTEGER_TYPES_H_INCLUDED
+#define BITTRICKS_INTEGER_TYPES_H_INCLUDED
 
 #include <limits>
 #include <type_traits>
