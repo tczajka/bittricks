@@ -70,9 +70,11 @@ namespace impl
  *
  * Signed types are considered to have the same number of bits as the
  * corresponding unsigned types.
+ *
+ * In C++17, this could be an inline constexpr instead.
  */
 template<typename T>
-constexpr int bit_size {impl::bit_size_helper<T>()};
+class bit_size : public std::integral_constant<int, impl::bit_size_helper<T>()> {};
 
 /*
  * The unsigned type with the given bit_size, if one exists.
@@ -80,15 +82,15 @@ constexpr int bit_size {impl::bit_size_helper<T>()};
 template<int bits>
 using unsigned_t =
     typename
-    std::conditional_t<bit_size<unsigned char> == bits,
+    std::conditional_t<bit_size<unsigned char>::value == bits,
         impl::wrap_type<unsigned char>,
-        std::conditional_t<bit_size<unsigned short> == bits,
+        std::conditional_t<bit_size<unsigned short>::value == bits,
             impl::wrap_type<unsigned short>,
-            std::conditional_t<bit_size<unsigned> == bits,
+            std::conditional_t<bit_size<unsigned>::value == bits,
                 impl::wrap_type<unsigned>,
-                std::conditional_t<bit_size<unsigned long> == bits,
+                std::conditional_t<bit_size<unsigned long>::value == bits,
                     impl::wrap_type<unsigned long>,
-                    std::conditional_t<bit_size<unsigned long long> == bits,
+                    std::conditional_t<bit_size<unsigned long long>::value == bits,
                         impl::wrap_type<unsigned long long>,
                         impl::undefined_unsigned_t
                     >
